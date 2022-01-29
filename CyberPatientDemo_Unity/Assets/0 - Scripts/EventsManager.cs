@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class EventsManager : MonoBehaviour
+public static class EventsManager
 {
-    // Start is called before the first frame update
-    void Start()
+    public static event Action OnConnectedToMaster = delegate { };
+    public static void Fire_evt_ConnectedToMaster()
     {
-        
+        OnConnectedToMaster();
     }
 
-    // Update is called once per frame
-    void Update()
+    public static event Action OnJoinedLobby = delegate { };
+    public static void Fire_evt_JoinedLobby()
     {
-        
+        OnJoinedLobby();
     }
 }

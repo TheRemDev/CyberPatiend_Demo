@@ -31,14 +31,19 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
         base.OnConnectedToMaster();
         Debug.Log("Multiplayer Manager: Connected to master");
 
+        EventsManager.Fire_evt_ConnectedToMaster();
+
         PhotonNetwork.JoinLobby();
         Debug.Log("Multiplayer Manager: Joining Lobby...");
+
+     
     }
 
     public override void OnJoinedLobby()
     {
         base.OnJoinedLobby();
         Debug.Log("Multiplayer Manager: Join Lobby Success !");
+        EventsManager.Fire_evt_JoinedLobby();
     }
 
 }
