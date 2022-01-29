@@ -16,4 +16,10 @@ public static class EventsManager
     {
         OnJoinedLobby();
     }
+
+    public static event Action OnJoinedRoom = delegate { };
+    public static void Fire_evt_JoinedRoom()
+    {
+        OnJoinedRoom();
+    }
 }

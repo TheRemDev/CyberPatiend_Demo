@@ -71,10 +71,12 @@ public class LoadingUI : MonoBehaviour
     public void OnCreateRoomButtonPressed()
     {
         Debug.Log("Create Room button pressed");
+        MultiplayerManager.Instance.CreateRoom(createdRoomName);
     }
 
     public void OnJoinRoomButtonPressed()
     {
         Debug.Log("Join Room button pressed");
+        MultiplayerManager.Instance.JoinRoom(joinedRoomName);
     }
 }

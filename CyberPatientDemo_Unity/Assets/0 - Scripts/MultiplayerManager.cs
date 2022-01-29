@@ -46,4 +46,21 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
         EventsManager.Fire_evt_JoinedLobby();
     }
 
+    public void JoinRoom(string roomName)
+    {
+        PhotonNetwork.JoinRoom(roomName);
+    }
+
+    public void CreateRoom(string roomName)
+    {
+        PhotonNetwork.CreateRoom(roomName);
+    }
+
+    public override void OnJoinedRoom()
+    {
+        base.OnJoinedRoom();
+        EventsManager.Fire_evt_JoinedRoom();
+
+    }
+
 }
