@@ -29,8 +29,19 @@ public class Player : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log("Player clicked on: " + hit.collider.name);
-                MoveToPoint(hit.point);
+                //Player clicked on interactable
+                if (hit.collider.GetComponent<Interactable>() != null)
+                {
+                    Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+                    MoveToPoint(interactable.GetInteractionPosition());
+                    interactable.Interact(this);
+                }
+                //Player clicked on something else, moving him/her to position
+                else 
+                {
+                    MoveToPoint(hit.point);
+                }
             }
         }
 
