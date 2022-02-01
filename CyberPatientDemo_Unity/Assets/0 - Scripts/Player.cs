@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     PhotonView photonView;
     Camera mainCam;
     NavMeshAgent agent;
+    [SerializeField] private Animator animator;
 
     private void Awake()
     {
@@ -19,6 +20,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        animator.SetFloat("velocity", agent.velocity.magnitude);
+
         if (!photonView.IsMine)
             return;
 
@@ -44,16 +47,11 @@ public class Player : MonoBehaviour
                 }
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            EventsManager.Fire_evt_PlayerOpenedString("Test message to show on pop up screens");
-        }
     }
 
     private void MoveToPoint(Vector3 point)
     {
-        Debug.Log("Moving to position: " + point);
+        //Debug.Log("Moving to position: " + point);
         agent.SetDestination(point);
         agent.isStopped = false;
     }
