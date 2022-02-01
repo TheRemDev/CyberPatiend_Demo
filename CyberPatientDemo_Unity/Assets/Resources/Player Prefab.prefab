@@ -343,5 +343,5 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: velocity
   m_SynchronizeLayers:
-  - SynchronizeType: 2
+  - SynchronizeType: 0
     LayerIndex: 0
