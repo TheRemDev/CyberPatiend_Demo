@@ -33,6 +33,11 @@ public class Player : MonoBehaviour
                 MoveToPoint(hit.point);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            EventsManager.Fire_evt_PlayerOpenedString("Test message to show on pop up screens");
+        }
     }
 
     private void MoveToPoint(Vector3 point)

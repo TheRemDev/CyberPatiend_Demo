@@ -22,4 +22,11 @@ public static class EventsManager
     {
         OnJoinedRoom();
     }
+
+    public static event Action<string> OnPlayerOpenedString = delegate { };
+    public static void Fire_evt_PlayerOpenedString(string str)
+    {
+        Debug.Log("Player opened a string event raised...");
+        OnPlayerOpenedString(str);
+    }
 }

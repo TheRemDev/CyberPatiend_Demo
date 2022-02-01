@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class LoadingUI : MonoBehaviour
 {
@@ -22,6 +23,31 @@ public class LoadingUI : MonoBehaviour
     {
         CenterAllScreens();
         DisableButtons();
+        DisableAllScreens();
+        all_screens[0].gameObject.SetActive(true);
+    }
+
+    private void OnEnable()
+    {
+        EventsManager.OnJoinedLobby += OnJoinedLobby;
+        EventsManager.OnJoinedRoom += OnJoinedRoom;
+    }
+
+    private void OnDisable()
+    {
+        EventsManager.OnJoinedLobby -= OnJoinedLobby;
+        EventsManager.OnJoinedRoom -= OnJoinedRoom;
+    }
+
+    private void OnJoinedRoom()
+    {
+   
+    }
+
+    private void OnJoinedLobby()
+    {
+        all_screens[0].gameObject.SetActive(false);
+        all_screens[1].gameObject.SetActive(true);
     }
 
     void CenterAllScreens()
@@ -78,5 +104,13 @@ public class LoadingUI : MonoBehaviour
     {
         Debug.Log("Join Room button pressed");
         MultiplayerManager.Instance.JoinRoom(joinedRoomName);
+    }
+
+    void DisableAllScreens()
+    {
+        for (int i = 0; i < all_screens.Length; i++)
+        {
+            all_screens[i].gameObject.SetActive(false);
+        }
     }
 }
